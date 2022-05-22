@@ -4,8 +4,12 @@
 #include <unistd.h>
 #define NUM_RESTAURANTES 10
 
-int mochila = 0, meta = 0, x = 1, bancada[NUM_RESTAURANTES] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+int mochila = 0, meta = 0, x = 1, bancada[NUM_RESTAURANTES];
 pthread_mutex_t m;
+
+for(int i=0; i<NUM_RESTAURANTES; i++){
+    bancada[i] = 0;
+}
 
 void *Entregador(void *argumento) { 
     if(meta < 50) {
