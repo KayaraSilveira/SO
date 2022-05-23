@@ -16,9 +16,9 @@ void *Entregador(void *argumento) {
         x = 0;
         pthread_mutex_lock(&m);
         printf("O entregador saiu do ponto A para entregar a comida no ponto B\n\n");
-        mochila = 0; //terminou a entrega do laranjal
-        pthread_mutex_unlock(&m); //volta a mimir, serviço fácil
-        sleep(15); //saiu pra entrega o lanche do laranjal
+        mochila = 0; 
+        pthread_mutex_unlock(&m);
+        sleep(15);
         printf("\nO entregador voltou para o ponto A\n\n");
         x = 1;
     }
@@ -59,7 +59,7 @@ void *Restaurante(void *i) {
     pthread_t transporte_id;
     int tempo;
     tempo = rand() % 50;
-    sleep(tempo); //tempo para fazer a comidinha nham nham
+    sleep(tempo);
     printf("O restaurante %ld finalizou o preparo da comida, tempo de preparo: %d segundos\n", (long)i, tempo);
     if(x == 0) {
         printf("O restaurante %ld colocou a comida na bancada\n", (long)i);
