@@ -7,10 +7,6 @@
 int mochila = 0, meta = 0, x = 1, bancada[NUM_RESTAURANTES];
 pthread_mutex_t m;
 
-for(int i=0; i<NUM_RESTAURANTES; i++){
-    bancada[i] = 0;
-}
-
 void *Entregador(void *argumento) { 
     if(meta < 50) {
         x = 0;
@@ -56,7 +52,7 @@ void *Funcionario(void *i) {
 
 void *Restaurante(void *i) {
 
-    pthread_t transporte_id;
+    pthread_t funcionario_id;
     int tempo;
     tempo = rand() % 50;
     sleep(tempo);
@@ -67,9 +63,10 @@ void *Restaurante(void *i) {
     }
     else {
         bancada[(long)i] = 0;
-        pthread_create(&transporte_id, NULL, Funcionario, (void *)i);
+        pthread_create(&funcionario_id, NULL, Funcionario, (void *)i);
     }
 }
+
 
 
 int main (int argc, char *argv[]){
